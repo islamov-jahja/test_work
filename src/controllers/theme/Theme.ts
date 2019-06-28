@@ -28,14 +28,7 @@ export class Theme implements ITheme{
     async deleteTheme(tokenArg: string, themeId: string): Promise<void> {
         const email: string = this.getEmailFromToken(tokenArg);
         const theme: any = await models.ThemeModel.findOne({_id: themeId});
-
-        if (theme === null){
-            throw new TypeError("такой темы не существует");
-        }
-
-        if (theme.email != email){
-            throw new TypeError("невозможно удалить чужую тему");
-        }
+        this.ValidateUserTheme(theme, email);
 
         await models.ThemeModel.findOneAndRemove({email: email});
     }
@@ -44,7 +37,24 @@ export class Theme implements ITheme{
         return undefined;
     }
 
-    refreshTheme(tokenArg: string, themeId: string, newNameOfTheme: string): Promise<any> {
-        return undefined;
+    async refreshTheme(tokenArg: string, themeId: string, newNameOfTheme: string): Promise<any> {
+        if (newNameOfTheme.length  <= 0)
+            throw new TypeError("название темы не может быть пустым");
+
+        const email: string = this.getEmailFromToken(tokenArg);
+        const theme: any = await models.ThemeModel.findOne({_id: themeId});
+        this.ValidateUserTheme(theme, email);
+
+        await models.ThemeModel.findOneAndUpdate({_id: themeId}, {theme_name: newNameOfTheme});
+    }
+
+    ValidateUserTheme(themeModel: any, email: string) : void {
+        if (themeModel === null){
+            throw new TypeError("такой темы не существует");
+        }
+
+        if (themeModel.email != email){
+            throw new TypeError("невозможно удалить чужую тему");
+        }
     }
 }

@@ -1,7 +1,8 @@
-import {BodyProp, Controller, Delete, Post, Put} from "tsoa";
+import {BodyProp, Controller, Delete, Get, Post, Put} from "tsoa";
 import {ITheme} from "./ITheme";
 import {checkAuth} from "../../middleware/auth";
 import {Theme} from "./Theme";
+import {IThemeModel} from "../../models/theme/IThemeModel";
 
 export class ThemeController extends Controller {
     private theme: ITheme = new Theme();
@@ -39,6 +40,17 @@ export class ThemeController extends Controller {
             await this.theme.refreshTheme(tokenArg, id, newNameOfTheme);
             this.setStatus(200);
             return "тема изменена";
+        }catch (e) {
+            this.setStatus(400);
+            return e.message;
+        }
+    }
+
+    @Get('/theme/:id')
+    public async getThemes(@BodyProp() page: number): Promise<IThemeModel[]>{
+        try{
+            this.setStatus(200);
+            return await this.theme.getThemes(page);
         }catch (e) {
             this.setStatus(400);
             return e.message;

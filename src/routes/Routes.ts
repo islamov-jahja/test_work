@@ -1,7 +1,7 @@
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
-import { TodoController } from '../todo.controller';
 import * as express from 'express';
 import {controllers} from "../controllers/controllers";
+import {registration} from "../functions/Functions";
 
 const models: TsoaRoute.Models = {
     "ITodo": {
@@ -81,6 +81,25 @@ export function RegisterRoutes(app: express.Express) {
         await promiseHandler(controller, promise, response, next);
     });
 
+    app.put('/user/username', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            userName: { "in": "body-prop", "name": "userName", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next(err);
+        }
+
+        const controller = await new controllers.UserController();
+        const promise = await controller.changeUserName.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
     app.post('/theme', async function (request: any, response: any, next: any) {
         const args = {
             token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
@@ -139,12 +158,12 @@ export function RegisterRoutes(app: express.Express) {
         await promiseHandler(controller, promise, response, next);
     });
 
-    app.put('/user/username', async function (request: any, response: any, next: any) {
+    app.get('/theme/:id', async function (request: any, response: any, next: any) {
         const args = {
-            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
-            userName: { "in": "body-prop", "name": "userName", "required": true, "dataType": "string" }
+            page: { "in": "path", "name": "id", "required": true, "dataType": "string" }
         };
 
+        console.log(request.params['page']);
         let validatedArgs: any[] = [];
 
         try {
@@ -153,82 +172,10 @@ export function RegisterRoutes(app: express.Express) {
             return next(err);
         }
 
-        const controller = await new controllers.UserController();
-        const promise = await controller.changeUserName.apply(controller, validatedArgs as any);
+        const controller = new controllers.ThemeController();
+        const promise = await controller.getThemes.apply(controller, validatedArgs as any);
         await promiseHandler(controller, promise, response, next);
     });
-
-    app.get('/todo',
-        async function(request: any, response: any, next: any) {
-            const args = {
-                token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" }
-            };
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = new TodoController();
-            const promise = await controller.getAll.apply(controller, validatedArgs as any);
-            await promiseHandler(controller, promise, response, next);
-        });
-    app.post('/todo',
-        async function(request: any, response: any, next: any) {
-            const args = {
-                description: { "in": "body-prop", "name": "description", "required": true, "dataType": "string" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = new TodoController();
-            const promise = await controller.create.apply(controller, validatedArgs as any);
-            await promiseHandler(controller, promise, response, next);
-        });
-    app.put('/todo/:id',
-        async function(request: any, response: any, next: any) {
-            const args = {
-                id: { "in": "path", "name": "id", "required": true, "dataType": "string" },
-                description: { "in": "body-prop", "name": "description", "required": true, "dataType": "string" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = new TodoController();
-
-
-            const promise = await controller.update.apply(controller, validatedArgs as any);
-            await promiseHandler(controller, promise, response, next);
-        });
-    app.delete('/todo/:id',
-        async function(request: any, response: any, next: any) {
-            const args = {
-                id: { "in": "path", "name": "id", "required": true, "dataType": "string" },
-            };
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = new TodoController();
-            const promise = await controller.remove.apply(controller, validatedArgs as any);
-            await promiseHandler(controller, promise, response, next);
-        });
-
 
     function isController(object: any): object is Controller {
         return 'getHeaders' in object && 'getStatus' in object && 'setStatus' in object;

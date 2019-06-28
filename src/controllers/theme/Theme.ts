@@ -5,8 +5,10 @@ import * as jwt from "jsonwebtoken";
 import {IAccessTokenData} from "./IAccessTokenData";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
+import {UserModel} from "../../models/user/User";
 
 export class Theme implements ITheme{
+    private COUNT_OF_THEMES_ON_PAGE: number = 5;
 
     private getEmailFromToken(tokenArg: string): string {
         const payload: IAccessTokenData = jwt.verify(tokenArg, token.secret);
@@ -33,8 +35,15 @@ export class Theme implements ITheme{
         await models.ThemeModel.findOneAndRemove({email: email});
     }
 
-    getThemes(numberOfPage: number): Promise<IThemeModel[]> {
-        return undefined;
+    async getThemes(numberOfPage: number): Promise<IThemeModel[]> {
+
+        if (numberOfPage <= 0){
+            throw new TypeError('номер странички не может быть меньше 0');
+        }
+
+        let items: any = await models.ThemeModel.find({}).skip((numberOfPage-1) * this.COUNT_OF_THEMES_ON_PAGE).limit(5);
+        items = items.map((item) => { return {id: item._id, description: item.description}});
+        return items;
     }
 
     async refreshTheme(tokenArg: string, themeId: string, newNameOfTheme: string): Promise<any> {

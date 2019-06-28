@@ -63,6 +63,44 @@ export function RegisterRoutes(app: express.Express) {
         await promiseHandler(controller, promise, response, next);
     });
 
+    app.post('/theme', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            nameOfTheme: { "in": "body-prop", "name": "nameOfTheme", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next(err);
+        }
+
+        const controller = new controllers.ThemeController();
+        const promise = await controller.createTheme.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.delete('/theme/:id', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            themeId: { "in": "path", "name": "id", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next(err);
+        }
+
+        const controller = new controllers.ThemeController();
+        const promise = await controller.deleteTheme.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
     app.post('/user/refresh', async function (request: any, response: any, next: any) {
         const args = {
             token: { "in": "body-prop", "name": "refreshToken", "required": true, "dataType": "string" },

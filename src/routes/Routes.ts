@@ -1,7 +1,6 @@
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 import * as express from 'express';
 import {controllers} from "../controllers/controllers";
-import {registration} from "../functions/Functions";
 
 const models: TsoaRoute.Models = {
     "ITodo": {
@@ -36,11 +35,49 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.UserController();
         const promise = await controller.registrationOfUser.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.post('/user/recovery', async function (request: any, response: any, next: any) {
+        const args = {
+            email: { "in": "body-prop", "name": "email", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next(err);
+        }
+
+        const controller = new controllers.UserController();
+        const promise = await controller.sendCodeForPasswordRecovery.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.put('/user/recovery', async function (request: any, response: any, next: any) {
+        const args = {
+            email: { "in": "body-prop", "name": "email", "required": true, "dataType": "string" },
+            newPassword: { "in": "body-prop", "name": "password", "required": true, "dataType": "string" },
+            codeForRecovery: { "in": "body-prop", "name": "code", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.UserController();
+        const promise = await controller.recoveryPassword.apply(controller, validatedArgs as any);
         await promiseHandler(controller, promise, response, next);
     });
 
@@ -55,7 +92,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.UserController();
@@ -73,7 +110,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.UserController();
@@ -92,7 +129,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = await new controllers.UserController();
@@ -111,7 +148,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.ThemeController();
@@ -130,7 +167,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.ThemeController();
@@ -150,7 +187,7 @@ export function RegisterRoutes(app: express.Express) {
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.ThemeController();
@@ -163,17 +200,132 @@ export function RegisterRoutes(app: express.Express) {
             page: { "in": "path", "name": "id", "required": true, "dataType": "string" }
         };
 
-        console.log(request.params['page']);
         let validatedArgs: any[] = [];
 
         try {
             validatedArgs = getValidatedArgs(args, request);
         } catch (err) {
-            return next(err);
+            return next();
         }
 
         const controller = new controllers.ThemeController();
         const promise = await controller.getThemes.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.post('/message', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            theme_id: { "in": "body-prop", "name": "theme_id", "required": true, "dataType": "string" },
+            text: { "in": "body-prop", "name": "message", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.MessageController();
+        const promise = await controller.createMessage.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.delete('/message/{id}', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.MessageController();
+        const promise = await controller.deleteMessage.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.put('/message', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" },
+            newMessage: { "in": "body-prop", "name": "message", "required": true, "dataType": "string" }
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.MessageController();
+        const promise = await controller.refreshMessage.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.get('/message/:page/:theme_id', async function (request: any, response: any, next: any) {
+        const args = {
+            page: { "in": "path", "name": "page", "required": true, "dataType": "string" },
+            theme_id: { "in": "path", "name": "theme_id", "required": true, "dataType": "string" },
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.MessageController();
+        const promise = await controller.getMessageFromTheme.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.post('/like', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" },
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.LikeController();
+        const promise = await controller.likeMessage.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+    app.delete('/like', async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" },
+        };
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+        } catch (err) {
+            return next();
+        }
+
+        const controller = new controllers.LikeController();
+        const promise = await controller.removeLike.apply(controller, validatedArgs as any);
         await promiseHandler(controller, promise, response, next);
     });
 

@@ -1,4 +1,6 @@
 import {IThemeModel} from "../../models/theme/IThemeModel";
+import {Tsoa} from "tsoa/dist/metadataGeneration/tsoa";
+import Controller = Tsoa.Controller;
 
 export interface ITheme {
     createNewTheme(tokenArg: string, nameOfTheme: string): Promise<void>;

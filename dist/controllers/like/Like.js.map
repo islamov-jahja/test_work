@@ -1,0 +1,1 @@
+{"version":3,"file":"Like.js","sourceRoot":"","sources":["../../../src/controllers/like/Like.ts"],"names":[],"mappings":";;AAEA,MAAa,IAAI;IACb,WAAW,CAAC,QAAgB,EAAE,UAAkB;QAC5C,OAAO,SAAS,CAAC;IACrB,CAAC;IAED,qBAAqB,CAAC,QAAgB,EAAE,UAAU;QAC9C,OAAO,SAAS,CAAC;IACrB,CAAC;CACJ;AARD,oBAQC"}

@@ -1,0 +1,275 @@
+{
+  "basePath": "/user",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "loginToken": {
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessToken",
+        "refreshToken"
+      ],
+      "type": "object"
+    }
+  },
+  "info": {
+    "title": "test_work",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    }
+  },
+  "paths": {
+    "/": {
+      "post": {
+        "operationId": "registrationOfUser",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Регистрацция успешно пройдена"
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "user_name": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "title": "CreateBody",
+              "type": "object",
+              "required": [
+                "email",
+                "user_name",
+                "password"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/login": {
+      "post": {
+        "operationId": "login",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/loginToken"
+            }
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "title": "CreateBody",
+              "type": "object",
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/refresh": {
+      "post": {
+        "operationId": "refreshTokens",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/loginToken"
+            }
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "token",
+            "schema": {
+              "properties": {
+                "refreshToken": {
+                  "type": "string"
+                }
+              },
+              "title": "CreateBody",
+              "type": "object",
+              "required": [
+                "refreshToken"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/username": {
+      "put": {
+        "operationId": "changeUserName",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "имя пользователя успешно изменена"
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "userName": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userName"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/recovery": {
+      "post": {
+        "operationId": "sendCodeForPasswordRecovery",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "письмо с кодом восстановления пароля отправлено"
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              },
+              "title": "CreateBody",
+              "type": "object",
+              "required": [
+                "email"
+              ]
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "recoveryPassword",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "пароль успешно заменен"
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                }
+              },
+              "title": "CreateBody",
+              "type": "object",
+              "required": [
+                "email",
+                "password",
+                "code"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "securityDefinitions": {}
+}

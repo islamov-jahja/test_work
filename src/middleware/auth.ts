@@ -1,5 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import {token} from "../core/app";
+import {IAccessTokenData} from "../controllers/theme/IAccessTokenData";
 
 export function checkAuth(tokenB: string){
     if (tokenB === '')
@@ -22,3 +23,8 @@ export function checkAuth(tokenB: string){
         throw new TypeError('невалидный токен');
     }
 };
+
+export function getEmailFromToken(tokenArg: string): string {
+    const payload: IAccessTokenData = jwt.verify(tokenArg, token.secret);
+    return payload.email;
+}

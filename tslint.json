@@ -1,0 +1,74 @@
+{
+  "extends": [
+    "tslint:recommended"
+  ],
+  "rules": {
+    "no-namespace": false,
+    "no-empty-interface": false,
+    "whitespace": [
+      true,
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "prefer-method-signature": true,
+    "array-type": [
+      true,
+      "array-simple"
+    ],
+    "no-return-await": true,
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "no-unused-expression": false,
+    "ordered-imports": true,
+    "max-line-length": [
+      true,
+      120
+    ],
+    "object-literal-sort-keys": false,
+    "no-var-requires": false,
+    "object-literal-key-quotes": [
+      true,
+      "consistent-as-needed"
+    ],
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-eval": false,
+    "trailing-comma": [
+      false
+    ],
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
+    "member-ordering": [true, {"order": "fields-first"}]
+  }
+}

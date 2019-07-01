@@ -8,14 +8,13 @@ export class UserController extends Controller {
     private user:IUser = new User();
 
     @Post('/user')
-    public async registrationOfUser(@BodyProp() email: string, @BodyProp() userName: string, @BodyProp() password: string ) : Promise<string> {
+    public async registrationOfUser(@BodyProp() email: string, @BodyProp() userName: string, @BodyProp() password: string ) : Promise<void> {
         try {
             await this.user.registration(email, userName, password);
             this.setStatus(200);
-            return "Регистрация успешно пройдена";
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
 
     }
@@ -28,7 +27,7 @@ export class UserController extends Controller {
             return {token: result};
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
     }
 
@@ -39,23 +38,45 @@ export class UserController extends Controller {
             this.setStatus(200);
             return result;
         }catch (e) {
-            this.setStatus(401);
-            return e.message;
+            this.setStatus(400);
+            console.log(e.message);
         }
     }
 
     @Put('/user/username')
-    public async changeUserName(tokenArg: string, newUserName: string):Promise<string>
+    public async changeUserName(tokenArg: string, newUserName: string):Promise<void>
     {
-        const user:IUser = new User;
         try {
             checkAuth(tokenArg);
-            await user.changeUserName(tokenArg, newUserName);
+            await this.user.changeUserName(tokenArg, newUserName);
             this.setStatus(200);
-            return "имя пользователя успешно изменена";
         }catch (e) {
-            this.setStatus(401);
-            return e.message;
+            this.setStatus(400);
+            console.log(e.message);
+        }
+    }
+
+    @Post('user/recovery')
+    public async sendCodeForPasswordRecovery(email: string): Promise<void>
+    {
+        try {
+            await this.user.senMailWithRecoveryCode(email);
+            this.setStatus(200);
+        }catch (e) {
+            this.setStatus(400);
+            console.log(e.message);
+        }
+    }
+
+    @Put('user/recovery')
+    public async recoveryPassword(email: string, newPassword: string, codeForRecovery: string): Promise<void>
+    {
+        try {
+            await this.user.recoveryPassword(email, newPassword, codeForRecovery);
+            this.setStatus(200);
+        }catch (e) {
+            this.setStatus(400);
+            console.log(e.message);
         }
     }
 }

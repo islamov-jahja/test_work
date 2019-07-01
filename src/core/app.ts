@@ -3,7 +3,6 @@ import * as cors from 'cors';
 import * as bodyparser from 'body-parser';
 
 import { requestLoggerMiddleware } from './request.logger.middleware';
-import '../todo.controller';
 import  './../controllers/user/UserController';
 
 import { RegisterRoutes } from '../routes/Routes';
@@ -15,10 +14,13 @@ app.use(bodyparser.json());
 
 app.use(requestLoggerMiddleware);
 RegisterRoutes(app);
-
+app.use(swaggerUi.serve);
 try {
+	//const swaggerDocumentUser = require('../docs/user.json');
+	//const swaggerDocumentTheme = require('../docs/theme.json');
 	const swaggerDocument = require('../../swagger.json');
-	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	app.use('/docs/user', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	//app.use('/docs/theme', swaggerUi.setup(swaggerDocumentTheme));
 } catch (err) {
 	console.error('Unable to read swagger.json', err);
 }
@@ -33,7 +35,7 @@ export const token ={
 		refresh:{
 			type: 'refresh',
 			expiresIn: '60m'
-		}
+		},
 	}
 };
 

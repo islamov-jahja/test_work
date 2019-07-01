@@ -8,41 +8,38 @@ export class ThemeController extends Controller {
     private theme: ITheme = new Theme();
 
     @Post('/theme')
-    public async createTheme(@BodyProp() tokenArg: string, @BodyProp() nameOfTheme: string): Promise<string> {
+    public async createTheme(@BodyProp() tokenArg: string, @BodyProp() nameOfTheme: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.createNewTheme(tokenArg, nameOfTheme);
             this.setStatus(200);
-            return "тема создана";
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
     }
 
     @Delete('/theme/:id')
-    public async deleteTheme(@BodyProp() tokenArg: string, @BodyProp() id: string): Promise<string> {
+    public async deleteTheme(@BodyProp() tokenArg: string, @BodyProp() id: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.deleteTheme(tokenArg, id);
             this.setStatus(200);
-            return "тема удалена";
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
     }
 
     @Put('/theme/:id')
-    public async refreshTheme(@BodyProp() tokenArg: string, @BodyProp() id: string, @BodyProp() newNameOfTheme: string): Promise<string> {
+    public async refreshTheme(@BodyProp() tokenArg: string, @BodyProp() id: string, @BodyProp() newNameOfTheme: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.refreshTheme(tokenArg, id, newNameOfTheme);
             this.setStatus(200);
-            return "тема изменена";
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
     }
 
@@ -53,7 +50,7 @@ export class ThemeController extends Controller {
             return await this.theme.getThemes(page);
         }catch (e) {
             this.setStatus(400);
-            return e.message;
+            console.log(e.message);
         }
     }
 

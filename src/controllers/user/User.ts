@@ -6,6 +6,8 @@ import {ObjectID} from "bson";
 import {Token} from "./AuthHelper";
 import {token} from "../../core/app";
 import {ITokens} from "./ITokens";
+import {EmailServices} from "../services/EmailServices";
+import {Controller} from "tsoa";
 
 export class User implements IUser{
     private async updateTokens(email: string, username: string, pathToImage: string): Promise<ITokens>{
@@ -88,5 +90,37 @@ export class User implements IUser{
     async changeUserName(tokenArg : string, newUserName: string): Promise<void> {
         const payload : any = jwt.verify(tokenArg, token.secret);
         await models.UserModel.findOneAndUpdate({email: payload.email}, {username: newUserName});
+    }
+
+    async senMailWithRecoveryCode(email: string): Promise<void> {
+        const user: any = await models.UserModel.findOne({ email: email });
+
+        if (user === null)
+        {
+            throw new TypeError("Такого пользователя не существует");
+        }
+
+        const codeForRecovery: any = new ObjectID().toHexString();
+        await models.UserModel.findOneAndUpdate({ email: email }, {code_for_recovery: codeForRecovery});
+        const emailServices: EmailServices = new EmailServices();
+        await emailServices.sendCode(email, codeForRecovery);
+    }
+
+    async recoveryPassword(email: string, newPassword: string, codeForRecovery: string): Promise<void> {
+        const user: any = await models.UserModel.findOne({ email: email });
+
+        if (user === null) {
+            throw new TypeError("Такого пользователя не существует");
+        }
+
+        if (codeForRecovery != user.code_for_recovery){
+            throw new TypeError("Код восстановления неверен");
+        }
+
+        if (newPassword.length < 8){
+            throw new TypeError("слишком короткий пароль");
+        }
+
+        await models.UserModel.findOneAndUpdate({ email: email }, {password: md5(newPassword), code_for_recovery: null});
     }
 }

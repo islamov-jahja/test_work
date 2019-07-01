@@ -1,22 +1,16 @@
 import {ITheme} from "./ITheme";
 import {IThemeModel} from "../../models/theme/IThemeModel";
-import {token} from "../../core/app";
-import * as jwt from "jsonwebtoken";
-import {IAccessTokenData} from "./IAccessTokenData";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
-import {UserModel} from "../../models/user/User";
+import {getEmailFromToken} from "../../middleware/auth";
+import {EmailServices} from "../services/EmailServices";
+import {model} from "mongoose";
 
 export class Theme implements ITheme{
     private COUNT_OF_THEMES_ON_PAGE: number = 5;
 
-    private getEmailFromToken(tokenArg: string): string {
-        const payload: IAccessTokenData = jwt.verify(tokenArg, token.secret);
-        return payload.email;
-    }
-
     async createNewTheme(tokenArg: string, nameOfTheme: string): Promise<void> {
-        const email: string = this.getEmailFromToken(tokenArg);
+        const email: string = getEmailFromToken(tokenArg);
         if (nameOfTheme.length  <= 0)
             throw new TypeError("название темы не может быть пустым");
 
@@ -28,11 +22,15 @@ export class Theme implements ITheme{
     }
 
     async deleteTheme(tokenArg: string, themeId: string): Promise<void> {
-        const email: string = this.getEmailFromToken(tokenArg);
+        const email: string = getEmailFromToken(tokenArg);
         const theme: any = await models.ThemeModel.findOne({_id: themeId});
-        this.ValidateUserTheme(theme, email);
+        this.validateUserTheme(theme, email);
 
-        await models.ThemeModel.findOneAndRemove({email: email});
+        await models.ThemeModel.findOneAndRemove({_id: themeId});
+        const messages: any[] = await models.MessageModel.find({theme_id: themeId});
+
+        await messages.map((message) => {models.LikeModel.remove({message_id: message._id})});
+        await models.MessageModel.remove({theme_id: themeId});
     }
 
     async getThemes(numberOfPage: number): Promise<IThemeModel[]> {
@@ -42,7 +40,7 @@ export class Theme implements ITheme{
         }
 
         let items: any = await models.ThemeModel.find({}).skip((numberOfPage-1) * this.COUNT_OF_THEMES_ON_PAGE).limit(5);
-        items = items.map((item) => { return {id: item._id, description: item.description}});
+        items = items.map((item) => { return {id: item._id, email:item.email, theme_name:item.theme_name}});
         return items;
     }
 
@@ -50,14 +48,14 @@ export class Theme implements ITheme{
         if (newNameOfTheme.length  <= 0)
             throw new TypeError("название темы не может быть пустым");
 
-        const email: string = this.getEmailFromToken(tokenArg);
+        const email: string = getEmailFromToken(tokenArg);
         const theme: any = await models.ThemeModel.findOne({_id: themeId});
-        this.ValidateUserTheme(theme, email);
+        this.validateUserTheme(theme, email);
 
         await models.ThemeModel.findOneAndUpdate({_id: themeId}, {theme_name: newNameOfTheme});
     }
 
-    ValidateUserTheme(themeModel: any, email: string) : void {
+    private validateUserTheme(themeModel: any, email: string) : void {
         if (themeModel === null){
             throw new TypeError("такой темы не существует");
         }

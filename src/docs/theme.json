@@ -1,0 +1,62 @@
+{
+  "basePath": "/theme",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+
+  },
+  "info": {
+    "title": "test_work",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    }
+  },
+  "paths": {
+    "/theme": {
+      "post": {
+        "operationId": "createTheme",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "тема успешно создана"
+          },
+          "400":{
+            "description": "ошибка в введенных данных"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "nameOfTheme": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nameOfTheme"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "securityDefinitions": {}
+}

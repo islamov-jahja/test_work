@@ -4,9 +4,44 @@
 		"application/json"
 	],
 	"definitions": {
-		"ITodo": {
+		"loginToken": {
+			"properties": {
+				"accessToken": {
+					"type": "string"
+				},
+				"refreshToken": {
+					"type": "string"
+				}
+			}
+		},
+		"IThemeModel": {
 			"properties": {
 				"_id": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"theme_name": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"_id",
+				"email",
+				"theme_name"
+			],
+			"type": "object"
+		},
+		"IMessageModel": {
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"theme_id": {
 					"type": "string"
 				},
 				"description": {
@@ -15,22 +50,361 @@
 			},
 			"required": [
 				"_id",
+				"email",
+				"theme_id",
 				"description"
 			],
 			"type": "object"
 		}
 	},
 	"info": {
-		"title": "todo-server",
+		"title": "test_work",
 		"version": "1.0.0",
 		"license": {
 			"name": "ISC"
 		}
 	},
 	"paths": {
-		"/todo": {
+		"/user": {
+			"post": {
+				"operationId": "registrationOfUser",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Регистрацция успешно пройдена"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"email": {
+									"type": "string"
+								},
+								"user_name": {
+									"type": "string"
+								},
+								"password": {
+									"type": "string"
+								}
+							},
+							"title": "CreateBody",
+							"type": "object",
+							"required": [
+								"email",
+								"user_name",
+								"password"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/user/login": {
+			"post": {
+				"operationId": "login",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/loginToken"
+						}
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"email": {
+									"type": "string"
+								},
+								"password": {
+									"type": "string"
+								}
+							},
+							"title": "CreateBody",
+							"type": "object",
+							"required": [
+								"email",
+								"password"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/user/refresh": {
+			"post": {
+				"operationId": "refreshTokens",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"schema": {
+							"$ref": "#/definitions/loginToken"
+						}
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "token",
+						"schema": {
+							"properties": {
+								"refreshToken": {
+									"type": "string"
+								}
+							},
+							"title": "CreateBody",
+							"type": "object",
+							"required": [
+								"refreshToken"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/user/username": {
+			"put": {
+				"operationId": "changeUserName",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "имя пользователя успешно изменена"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"userName": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"userName"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/user/recovery": {
+			"post": {
+				"operationId": "sendCodeForPasswordRecovery",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "письмо с кодом восстановления пароля отправлено"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"email": {
+									"type": "string"
+								}
+							},
+							"title": "CreateBody",
+							"type": "object",
+							"required": [
+								"email"
+							]
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "recoveryPassword",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "пароль успешно заменен"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"email": {
+									"type": "string"
+								},
+								"password": {
+									"type": "string"
+								},
+								"code": {
+									"type": "string"
+								}
+							},
+							"title": "CreateBody",
+							"type": "object",
+							"required": [
+								"email",
+								"password",
+								"code"
+							]
+						}
+					}
+				]
+			}
+		},
+
+		"/theme": {
+			"post": {
+				"operationId": "createTheme",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "тема успешно создана"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"nameOfTheme": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"nameOfTheme"
+							]
+						}
+					}
+				]
+			}
+		},
+
+		"/theme/{id}": {
+			"delete": {
+				"operationId": "deleteTheme",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "тема успешно удалена"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": "true",
+						"type": "string"
+					}
+				]
+			},
+			"put": {
+				"operationId": "refreshTheme",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "тема успешно обнавлена"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": "true",
+						"type": "string"
+					}
+				]
+			},
 			"get": {
-				"operationId": "GetAll",
+				"operationId": "refreshTheme",
 				"produces": [
 					"application/json"
 				],
@@ -40,54 +414,12 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/ITodo"
+								"$ref": "#/definitions/IThemeModel"
 							}
 						}
-					}
-				},
-				"security": [],
-				"parameters": []
-			},
-			"post": {
-				"operationId": "Create",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"204": {
-						"description": "No content"
-					}
-				},
-				"security": [],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"schema": {
-							"properties": {
-								"description": {
-									"type": "string"
-								}
-							},
-							"title": "CreateBody",
-							"type": "object",
-							"required": [
-								"description"
-							]
-						}
-					}
-				]
-			}
-		},
-		"/todo/{id}": {
-			"put": {
-				"operationId": "Update",
-				"produces": [
-					"application/json"
-				],
-				"responses": {
-					"204": {
-						"description": "No content"
+					},
+					"400": {
+						"description": "ошибка в введенных данных"
 					}
 				},
 				"security": [],
@@ -95,7 +427,32 @@
 					{
 						"in": "path",
 						"name": "id",
-						"required": true,
+						"required": "true",
+						"type": "string"
+					}
+				]
+			}
+		},
+		"/message": {
+			"post": {
+				"operationId": "createMessage",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "сообщение успешно создана"
+					},
+					"400": {
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
 						"type": "string"
 					},
 					{
@@ -103,41 +460,215 @@
 						"name": "body",
 						"schema": {
 							"properties": {
-								"description": {
+								"theme_id": {
+									"type": "string"
+								},
+								"message": {
 									"type": "string"
 								}
 							},
-							"title": "UpdateBody",
-							"type": "object",
 							"required": [
-								"description"
+								"theme_id",
+								"message"
 							]
 						}
 					}
 				]
 			},
 			"delete": {
-				"operationId": "Remove",
+				"operationId": "deleteMessage",
 				"produces": [
 					"application/json"
 				],
 				"responses": {
-					"204": {
-						"description": "No content"
+					"200": {
+						"description": "сообщение успешно удалено"
+					},
+					"400": {
+						"description": "ошибка в введенных данных"
 					}
 				},
 				"security": [],
 				"parameters": [
 					{
-						"in": "path",
-						"name": "id",
-						"required": true,
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
 						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"message_id": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"message_id"
+							]
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "refreshMessage",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "сообщение успешно обнавлено"
+					},
+					"400": {
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"message_id": {
+									"type": "string"
+								},
+								"message": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"message_id",
+								"message"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/message/{page}/{theme_id}":{
+			"get": {
+				"operationId": "getMessageFromTheme",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "path",
+						"name": "page",
+						"type": "string",
+						"required": "true"
+					},
+					{
+						"in": "path",
+						"name": "theme_id",
+						"type": "string",
+						"required": "true"
+					}
+				]
+			}
+		},
+		"/like":{
+			"post": {
+				"operationId": "likeMessage",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"message_id": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"message_id"
+							]
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "removeLike",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"schema": {
+							"properties": {
+								"message_id": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"message_id"
+							]
+						}
 					}
 				]
 			}
 		}
 	},
+
 	"produces": [
 		"application/json"
 	],

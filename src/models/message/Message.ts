@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 const MessageSchema = new mongoose.Schema({
     _id: String,
-    creator_id: String,
+    email: String,
+    theme_id: String,
     description: String
 });
 

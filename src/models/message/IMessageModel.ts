@@ -1,5 +1,6 @@
 export interface IMessageModel {
     _id: string;
-    creator_id: string;
+    email: string;
+    theme_id: string;
     description: string;
 }

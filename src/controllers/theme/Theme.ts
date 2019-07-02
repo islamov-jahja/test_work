@@ -3,8 +3,6 @@ import {IThemeModel} from "../../models/theme/IThemeModel";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
 import {getEmailFromToken} from "../../middleware/auth";
-import {EmailServices} from "../services/EmailServices";
-import {model} from "mongoose";
 
 export class Theme implements ITheme{
     private COUNT_OF_THEMES_ON_PAGE: number = 5;

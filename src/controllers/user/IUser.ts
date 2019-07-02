@@ -1,5 +1,4 @@
 import {ITokens} from "./ITokens";
-import {BodyProp, Controller} from "tsoa";
 
 export interface IUser {
     registration(email: string, userName: string, password: string): Promise<void>;

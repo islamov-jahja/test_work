@@ -7,7 +7,6 @@ import {Token} from "./AuthHelper";
 import {token} from "../../core/app";
 import {ITokens} from "./ITokens";
 import {EmailServices} from "../services/EmailServices";
-import * as multer from 'multer';
 import {getEmailFromToken} from "../../middleware/auth";
 
 export class User implements IUser{

@@ -2,7 +2,6 @@ import {IMessage} from "./IMessage";
 import {getEmailFromToken} from "../../middleware/auth";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
-import {EmailServices} from "../services/EmailServices";
 
 export class Message implements IMessage{
     private COUNT_OF_MESSAGE_ON_PAGE: number = 5;

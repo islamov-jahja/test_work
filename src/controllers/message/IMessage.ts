@@ -1,4 +1,3 @@
-import {promises} from "fs";
 
 export interface IMessage {
     createNewMessage(tokenArg: string, theme_id: string, message: string):Promise<void>;

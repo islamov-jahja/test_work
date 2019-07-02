@@ -1,4 +1,4 @@
-import { Controller, Route, Get, Post, BodyProp, Put, Delete } from 'tsoa';
+import { Controller, Route, Post, BodyProp, Put} from 'tsoa';
 import  { User } from './User';
 import {checkAuth} from '../../middleware/auth';
 import {IUser} from "./IUser";

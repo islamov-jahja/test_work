@@ -2,6 +2,7 @@ import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } 
 import * as express from 'express';
 import {controllers} from "../controllers/controllers";
 import * as multer from 'multer';
+import {models} from "../models/models";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,46 +30,7 @@ const upload = multer({
 });
 
 
-const models: TsoaRoute.Models = {
-    "IUserModel": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "email": { "dataType": "string", "required": true },
-            "password": { "dataType": "string", "required": true },
-            "username": { "dataType": "string", "required": true },
-            "path_to_image": { "dataType": "string", "required": false }
-        }
-    },
-    "ITokenModel": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "email": { "dataType": "string", "required": true }
-        }
-    },
-    "IThemeModel": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "email": { "dataType": "string", "required": true },
-            "theme_name": { "dataType": "string", "required": false }
-        },
-    },
-    "IMessageModel": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "email": { "dataType": "string", "required": true },
-            "theme_id": { "dataType": "string", "required": true },
-            "description": { "dataType": "string", "required": true }
-        }
-    },
-    "ILikeModel": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "message_id": { "dataType": "string", "required": true },
-            "email": { "dataType": "string", "required": true }
-        }
-    }
-};
-const validationService = new ValidationService(models);
+const validationService = new ValidationService(models.modelsTsoa);
 
 export function RegisterRoutes(app: express.Express) {
     app.post('/user', async function (request: any, response: any, next: any) {

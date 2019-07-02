@@ -14,7 +14,7 @@ app.use(bodyparser.json());
 app.use(request_logger_middleware_1.requestLoggerMiddleware);
 Routes_1.RegisterRoutes(app);
 try {
-    const swaggerDocument = require('../../swagger.json');
+    const swaggerDocument = require('../../src/docs/swagger.json');
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 catch (err) {

@@ -19,8 +19,8 @@ app.use(express.static('./'));
 try {
 	//const swaggerDocumentUser = require('../docs/user.json');
 	//const swaggerDocumentTheme = require('../docs/theme.json');
-	const swaggerDocument = require('../../swagger.json');
-	app.use('/docs/user', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	const swaggerDocument = require('../docs/swagger.json');
+	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 	//app.use('/docs/theme', swaggerUi.setup(swaggerDocumentTheme));
 } catch (err) {
 	console.error('Unable to read swagger.json', err);

@@ -3,17 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e0da15ba-e156-4380-b347-68d421a15a53" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/like/LikeController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/like/LikeController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/message/MessageController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/message/MessageController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/theme/ThemeController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/theme/ThemeController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user/IUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/IUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/UserController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/core/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/core/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/swagger.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/app.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="142">
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -62,10 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/swagger.json">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/docs/swagger.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
+            <state relative-caret-position="1547">
               <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
             </state>
           </provider>
@@ -206,8 +198,8 @@
         <option value="$PROJECT_DIR$/src/routes/Routes.ts" />
         <option value="$PROJECT_DIR$/src/controllers/user/User.ts" />
         <option value="$PROJECT_DIR$/src/controllers/user/IUser.ts" />
-        <option value="$PROJECT_DIR$/src/core/app.ts" />
         <option value="$PROJECT_DIR$/swagger.json" />
+        <option value="$PROJECT_DIR$/src/core/app.ts" />
       </list>
     </option>
   </component>
@@ -240,26 +232,13 @@
               <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
               <item name="test_work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
               <item name="test_work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -278,14 +257,15 @@
     <property name="ts.external.directory.path" value="C:\Users\Admin\source\repos\OOP\test_work\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\source\repos\OOP\test_work" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\source\repos\OOP\test_work\src\docs" />
       <recent name="C:\Users\Admin\source\repos\OOP\test_work\src\core" />
       <recent name="C:\Users\Admin\source\repos\OOP\test_work\src" />
       <recent name="C:\Users\Admin\source\repos\OOP\test_work\src\routes" />
       <recent name="C:\Users\Admin\source\repos\OOP\test_work\src\controllers\user" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\source\repos\OOP\test_work" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -370,12 +350,12 @@
       <workItem from="1561991600444" duration="2926000" />
       <workItem from="1562009151475" duration="1259000" />
       <workItem from="1562014726546" duration="6835000" />
-      <workItem from="1562050879919" duration="8838000" />
+      <workItem from="1562050879919" duration="9236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130230000" />
+    <option name="totallyTimeSpent" value="130628000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,13 +370,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27843803" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27843803" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39898133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -768,20 +748,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/app.ts">
+    <entry file="file://$PROJECT_DIR$/src/docs/swagger.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1547">
+          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/swagger.json">
+    <entry file="file://$PROJECT_DIR$/src/core/app.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
+        <state relative-caret-position="142">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

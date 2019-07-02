@@ -1,16 +1,36 @@
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 import * as express from 'express';
 import {controllers} from "../controllers/controllers";
+import * as multer from 'multer';
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads");
+    },
+    filename: function(req,file,cb){
+        cb(null, file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        cb(null, true);
+    }else{
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+        storage: storage,
+        limits: {
+            fileSize: 1024 * 1024 * 5
+        },
+        fileFilter: fileFilter
+});
+
 
 const models: TsoaRoute.Models = {
-    "ITodo": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "description": { "dataType": "string", "required": true },
-        },
-    }
-
-    /*"IUser": {
+    "IUserModel": {
         "properties": {
             "_id": { "dataType": "string", "required": true },
             "email": { "dataType": "string", "required": true },
@@ -18,7 +38,35 @@ const models: TsoaRoute.Models = {
             "username": { "dataType": "string", "required": true },
             "path_to_image": { "dataType": "string", "required": false }
         }
-    }*/
+    },
+    "ITokenModel": {
+        "properties": {
+            "_id": { "dataType": "string", "required": true },
+            "email": { "dataType": "string", "required": true }
+        }
+    },
+    "IThemeModel": {
+        "properties": {
+            "_id": { "dataType": "string", "required": true },
+            "email": { "dataType": "string", "required": true },
+            "theme_name": { "dataType": "string", "required": false }
+        },
+    },
+    "IMessageModel": {
+        "properties": {
+            "_id": { "dataType": "string", "required": true },
+            "email": { "dataType": "string", "required": true },
+            "theme_id": { "dataType": "string", "required": true },
+            "description": { "dataType": "string", "required": true }
+        }
+    },
+    "ILikeModel": {
+        "properties": {
+            "_id": { "dataType": "string", "required": true },
+            "message_id": { "dataType": "string", "required": true },
+            "email": { "dataType": "string", "required": true }
+        }
+    }
 };
 const validationService = new ValidationService(models);
 
@@ -42,6 +90,32 @@ export function RegisterRoutes(app: express.Express) {
         const promise = await controller.registrationOfUser.apply(controller, validatedArgs as any);
         await promiseHandler(controller, promise, response, next);
     });
+
+    app.post('/user/image',upload.single('userImage'), async function (request: any, response: any, next: any) {
+        const args = {
+            token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+        };
+
+
+        let validatedArgs: any[] = [];
+
+        try {
+            validatedArgs = getValidatedArgs(args, request);
+            if(request.file.filename === null){
+                throw new TypeError("неправильный формат файла");
+            }
+        } catch (err) {
+            return next();
+        }
+        console.log(request.file);
+        validatedArgs.push(request.file.originalname);
+
+        const controller = new controllers.UserController();
+        const promise = await controller.setImage.apply(controller, validatedArgs as any);
+        await promiseHandler(controller, promise, response, next);
+    });
+
+
 
     app.post('/user/recovery', async function (request: any, response: any, next: any) {
         const args = {

@@ -7,7 +7,7 @@ export class MessageController extends Controller {
     private message: IMessage = new Message();
 
     @Post('/message')
-    public async createMessage(tokenArg: string, theme_id: string, message: string):Promise<void>{
+    async createMessage(tokenArg: string, theme_id: string, message: string):Promise<void>{
         try{
             checkAuth(tokenArg);
             this.setStatus(200);
@@ -19,7 +19,7 @@ export class MessageController extends Controller {
     }
 
     @Delete('/message')
-    public async deleteMessage(tokenArg: string, message_id: string):Promise<void>{
+    async deleteMessage(tokenArg: string, message_id: string):Promise<void>{
         try{
             checkAuth(tokenArg);
             this.setStatus(200);
@@ -31,7 +31,7 @@ export class MessageController extends Controller {
     }
 
     @Put('/message')
-    public async refreshMessage(tokenArg: string, message_id: string, updateMessage: string):Promise<void>{
+    async refreshMessage(tokenArg: string, message_id: string, updateMessage: string):Promise<void>{
         try{
             checkAuth(tokenArg);
             this.setStatus(200);
@@ -43,7 +43,7 @@ export class MessageController extends Controller {
     }
 
     @Get('/message/:page/:theme_id')
-    public async getMessageFromTheme(theme_id: string, page: number):Promise<IMessage[]>{
+    async getMessageFromTheme(theme_id: string, page: number):Promise<IMessage[]>{
         try{
             this.setStatus(200);
             return await this.message.getMessagesInTheme(theme_id, page);

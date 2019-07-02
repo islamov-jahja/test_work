@@ -65,6 +65,37 @@
 		}
 	},
 	"paths": {
+		"/user/image": {
+			"post": {
+				"operationId": "setImage",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "изображение успешно загружено"
+					},
+					"400":{
+						"description": "ошибка в введенных данных"
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": "true",
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "image",
+						"required": "true",
+						"type": "file"
+					}
+				]
+			}
+		},
 		"/user": {
 			"post": {
 				"operationId": "registrationOfUser",

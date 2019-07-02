@@ -1,5 +1,5 @@
 import {ITokens} from "./ITokens";
-import {Controller} from "tsoa";
+import {BodyProp, Controller} from "tsoa";
 
 export interface IUser {
     registration(email: string, userName: string, password: string): Promise<void>;
@@ -8,4 +8,5 @@ export interface IUser {
     changeUserName(email: string, password: string): Promise<any>;
     senMailWithRecoveryCode(email: string): Promise<void>;
     recoveryPassword(email: string, newPassword: string, codeForRecovery: string): Promise<void>;
+    setImage(tokenArg: string, file: string):Promise<void>;
 }

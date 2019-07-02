@@ -19,8 +19,21 @@ export class UserController extends Controller {
 
     }
 
+    @Post('/user/image')
+    async setImage(@BodyProp() tokenArg: string, @BodyProp() path_to_file: string ) : Promise<void> {
+        try {
+            checkAuth(tokenArg);
+            await this.user.setImage(tokenArg, path_to_file);
+            this.setStatus(200);
+        }catch (e) {
+            this.setStatus(400);
+            console.log(e.message);
+        }
+
+    }
+
     @Post('/user/login')
-    public async login(@BodyProp() email: string, @BodyProp() password: string ) : Promise<Object> {
+    async login(@BodyProp() email: string, @BodyProp() password: string ) : Promise<Object> {
         try {
             const result = await this.user.login(email, password);
             this.setStatus(200);
@@ -32,7 +45,7 @@ export class UserController extends Controller {
     }
 
     @Post('/user/refresh')
-    public async refreshTokens(refreshToken: string):Promise<Object> {
+    async refreshTokens(@BodyProp() refreshToken: string):Promise<Object> {
         try {
             const result = await this.user.refreshTokens(refreshToken);
             this.setStatus(200);
@@ -44,11 +57,11 @@ export class UserController extends Controller {
     }
 
     @Put('/user/username')
-    public async changeUserName(tokenArg: string, newUserName: string):Promise<void>
+   async changeUserName(@BodyProp() tokenArg: string, @BodyProp()  newUserName: string):Promise<void>
     {
         try {
             checkAuth(tokenArg);
-            await this.user.changeUserName(tokenArg, newUserName);
+            await this.user.changeUserName(tokenArg,newUserName);
             this.setStatus(200);
         }catch (e) {
             this.setStatus(400);
@@ -57,7 +70,7 @@ export class UserController extends Controller {
     }
 
     @Post('user/recovery')
-    public async sendCodeForPasswordRecovery(email: string): Promise<void>
+    async sendCodeForPasswordRecovery(@BodyProp() email: string): Promise<void>
     {
         try {
             await this.user.senMailWithRecoveryCode(email);
@@ -69,7 +82,7 @@ export class UserController extends Controller {
     }
 
     @Put('user/recovery')
-    public async recoveryPassword(email: string, newPassword: string, codeForRecovery: string): Promise<void>
+    async recoveryPassword(@BodyProp() email: string,@BodyProp() newPassword: string,@BodyProp() codeForRecovery: string): Promise<void>
     {
         try {
             await this.user.recoveryPassword(email, newPassword, codeForRecovery);

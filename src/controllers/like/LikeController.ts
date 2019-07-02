@@ -9,7 +9,7 @@ export class LikeController extends Controller {
     private like: ILike = new Like();
 
     @Post('/like')
-    public async likeMessage(tokenArg: string, message_id: string):Promise<void>{
+    async likeMessage(tokenArg: string, message_id: string):Promise<void>{
         try{
             checkAuth(tokenArg);
             this.setStatus(200);
@@ -21,7 +21,7 @@ export class LikeController extends Controller {
     }
 
     @Delete('/like')
-    public async removeLike(tokenArg: string, message_id: string):Promise<void>{
+    async removeLike(tokenArg: string, message_id: string):Promise<void>{
         try{
             checkAuth(tokenArg);
             this.setStatus(200);

@@ -7,7 +7,8 @@ import {Token} from "./AuthHelper";
 import {token} from "../../core/app";
 import {ITokens} from "./ITokens";
 import {EmailServices} from "../services/EmailServices";
-import {Controller} from "tsoa";
+import * as multer from 'multer';
+import {getEmailFromToken} from "../../middleware/auth";
 
 export class User implements IUser{
     private async updateTokens(email: string, username: string, pathToImage: string): Promise<ITokens>{
@@ -20,6 +21,11 @@ export class User implements IUser{
             accessToken: accessToken,
             refreshToken: refreshToken.token
         }
+    }
+
+    async setImage(tokenArg: string, file: string):Promise<void> {
+        const email: string = getEmailFromToken(tokenArg);
+        await models.UserModel.findOneAndUpdate({email: email}, {path_to_image: "uploads/"+ file});
     }
 
     async registration(email: string, userName: string, password: string): Promise<void> {

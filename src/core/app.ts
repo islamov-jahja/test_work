@@ -15,6 +15,7 @@ app.use(bodyparser.json());
 app.use(requestLoggerMiddleware);
 RegisterRoutes(app);
 app.use(swaggerUi.serve);
+app.use(express.static('./'));
 try {
 	//const swaggerDocumentUser = require('../docs/user.json');
 	//const swaggerDocumentTheme = require('../docs/theme.json');

@@ -8,7 +8,7 @@ export class ThemeController extends Controller {
     private theme: ITheme = new Theme();
 
     @Post('/theme')
-    public async createTheme(@BodyProp() tokenArg: string, @BodyProp() nameOfTheme: string): Promise<void> {
+    async createTheme(@BodyProp() tokenArg: string, @BodyProp() nameOfTheme: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.createNewTheme(tokenArg, nameOfTheme);
@@ -20,7 +20,7 @@ export class ThemeController extends Controller {
     }
 
     @Delete('/theme/:id')
-    public async deleteTheme(@BodyProp() tokenArg: string, @BodyProp() id: string): Promise<void> {
+    async deleteTheme(@BodyProp() tokenArg: string, @BodyProp() id: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.deleteTheme(tokenArg, id);
@@ -32,7 +32,7 @@ export class ThemeController extends Controller {
     }
 
     @Put('/theme/:id')
-    public async refreshTheme(@BodyProp() tokenArg: string, @BodyProp() id: string, @BodyProp() newNameOfTheme: string): Promise<void> {
+    async refreshTheme(@BodyProp() tokenArg: string, @BodyProp() id: string, @BodyProp() newNameOfTheme: string): Promise<void> {
         try{
             checkAuth(tokenArg);
             await this.theme.refreshTheme(tokenArg, id, newNameOfTheme);
@@ -44,7 +44,7 @@ export class ThemeController extends Controller {
     }
 
     @Get('/theme/:id')
-    public async getThemes(@BodyProp() page: number): Promise<IThemeModel[]>{
+    async getThemes(@BodyProp() page: number): Promise<IThemeModel[]>{
         try{
             this.setStatus(200);
             return await this.theme.getThemes(page);

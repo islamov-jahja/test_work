@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import {IMessageModel} from "./IMessageModel";
+
 const MessageSchema = new mongoose.Schema({
     _id: String,
     email: String,
@@ -6,6 +8,6 @@ const MessageSchema = new mongoose.Schema({
     description: String
 });
 
-const MessageModel = mongoose.model('Message', MessageSchema);
+const MessageModel = mongoose.model<IMessageModel>('Message', MessageSchema);
 
 export { MessageModel }

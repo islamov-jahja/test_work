@@ -2,6 +2,7 @@ import {Controller, Delete, Get, Post, Put} from "tsoa";
 import {IMessage} from "./IMessage";
 import {Message} from "./Message";
 import {checkAuth} from "../../middleware/auth";
+import {IMessageModel} from "../../models/message/IMessageModel";
 
 export class MessageController extends Controller {
     private message: IMessage = new Message();
@@ -43,7 +44,7 @@ export class MessageController extends Controller {
     }
 
     @Get('/message/:page/:theme_id')
-    async getMessageFromTheme(theme_id: string, page: number):Promise<IMessage[]>{
+    async getMessageFromTheme(theme_id: string, page: number):Promise<IMessageModel[]>{
         try{
             this.setStatus(200);
             return await this.message.getMessagesInTheme(theme_id, page);

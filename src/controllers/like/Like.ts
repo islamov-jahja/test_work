@@ -1,8 +1,8 @@
 import {ILike} from "./ILike";
 import {getEmailFromToken} from "../../middleware/auth";
 import {models} from "../../models/models";
-import {Schema} from "mongoose";
 import {ObjectID} from "bson";
+import {ILikeModel} from "../../models/like/ILikeModel";
 
 export class Like implements ILike{
     async likeMessage(tokenArg: string, message_id: string): Promise<void> {
@@ -22,7 +22,7 @@ export class Like implements ILike{
 
     async  removeLikeFromMessage(tokenArg: string, message_id): Promise<void> {
         const email: string = getEmailFromToken(tokenArg);
-        const like:any = await models.LikeModel.findOne({message_id:message_id, email:email});
+        const like: ILikeModel = await models.LikeModel.findOne({message_id:message_id, email:email});
 
         if (like === null){
             throw new TypeError("вы не ставили этому сообщению лайк");

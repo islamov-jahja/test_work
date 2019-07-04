@@ -2,12 +2,14 @@ import {IMessage} from "./IMessage";
 import {getEmailFromToken} from "../../middleware/auth";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
+import {IMessageModel} from "../../models/message/IMessageModel";
+import {IThemeModel} from "../../models/theme/IThemeModel";
 
 export class Message implements IMessage{
     private COUNT_OF_MESSAGE_ON_PAGE: number = 5;
     async createNewMessage(tokenArg: string, theme_id: string, message: string): Promise<void> {
         const email: string = getEmailFromToken(tokenArg);
-        const theme: any = await models.ThemeModel.findOne({_id: theme_id});
+        const theme: IThemeModel = await models.ThemeModel.findOne({_id: theme_id});
 
         if (theme === null){
             throw new TypeError("такой темы нет");
@@ -27,14 +29,14 @@ export class Message implements IMessage{
 
     async deleteMessage(tokenArg: string, message_id: string): Promise<void> {
         const email: string = getEmailFromToken(tokenArg);
-        const message: any = await models.MessageModel.findOne({_id: message_id});
+        const message: IMessageModel = await models.MessageModel.findOne({_id: message_id});
         this.validateUserMessage(message, email);
 
         await models.MessageModel.findOneAndRemove({_id: message_id});
         await models.LikeModel.remove({message_id: message_id});
     }
 
-    async getMessagesInTheme(theme_id: string, page: number): Promise<IMessage[]> {
+    async getMessagesInTheme(theme_id: string, page: number): Promise<IMessageModel[]> {
         if (page <= 0){
             throw new TypeError('номер странички не может быть меньше 0');
         }
@@ -49,17 +51,17 @@ export class Message implements IMessage{
             throw new TypeError("содержимое сообщения не может быть пустым");
 
         const email: string = getEmailFromToken(tokenArg);
-        const message: any = await models.MessageModel.findOne({_id: message_id});
+        const message: IMessageModel = await models.MessageModel.findOne({_id: message_id});
         this.validateUserMessage(message, email);
         await models.MessageModel.findOneAndUpdate({_id: message_id}, {description: updateMessage});
     }
 
-    private validateUserMessage(themeModel: any, email: string) : void {
-        if (themeModel === null){
+    private validateUserMessage(messageModel: IMessageModel, email: string) : void {
+        if (messageModel === null){
             throw new TypeError("такого сообщения не существует");
         }
 
-        if (themeModel.email != email){
+        if (messageModel.email != email){
             throw new TypeError("невозможно удалить чужое сообщение");
         }
     }

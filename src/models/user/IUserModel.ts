@@ -1,4 +1,6 @@
-export interface IUserModel {
+import { Document } from 'mongoose';
+
+export interface IUserModel extends Document{
     _id: string | null;
     email: string | null;
     user_name: string | null;

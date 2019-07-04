@@ -3,10 +3,11 @@ import * as jwt from "jsonwebtoken";
 import * as uuid from 'uuid/v4';
 import {models} from "../../models/models";
 import {ITokenData} from "./ITokenData";
+import {IAccessTokenData} from "../theme/IAccessTokenData";
 
 export class Token{
     public generateAcсessToken(email: string, username: string, path_to_image: string) : string {
-        const tokenData = {
+        const tokenData: IAccessTokenData = {
             userName: username,
             path_to_image: path_to_image,
             email: email,

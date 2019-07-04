@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0da15ba-e156-4380-b347-68d421a15a53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/like/Like.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/like/Like.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/message/IMessage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/message/IMessage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/message/Message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/message/Message.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/message/MessageController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/message/MessageController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/like/ILikeModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/like/ILikeModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/like/like.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/like/like.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/message/IMessageModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/message/IMessageModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/message/Message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/message/Message.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/theme/IThemeModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/theme/IThemeModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/theme/Theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/theme/Theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/token/ITokenModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/token/ITokenModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/token/Token.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/token/Token.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user/IUserModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user/IUserModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/theme/ITheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/theme/ITheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/theme/Theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/theme/Theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user/AuthHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/AuthHelper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user/IUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/IUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/UserController.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,64 +21,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/like/ILikeModel.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/message/IMessageModel.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/message/Message.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/message/Message.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="38" column="16" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controllers/message/MessageController.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="48" column="32" lean-forward="true" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/controllers/theme/IAccessTokenData.ts">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/theme/ITheme.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+              <caret line="7" column="90" selection-start-line="7" selection-start-column="90" selection-end-line="7" selection-end-column="90" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -96,22 +38,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/theme/Theme.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/theme/Theme.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="39" column="22" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="22" />
+            <state relative-caret-position="510">
+              <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -120,10 +50,76 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/message/IMessage.ts">
+        <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+            <state relative-caret-position="-360">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#66#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/AuthHelper.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokenData.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokens.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/IUser.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1129">
+              <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controllers/user/UserController.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-527">
+              <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,7 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app.ts" />
         <option value="$PROJECT_DIR$/src/routes.ts" />
         <option value="$PROJECT_DIR$/src/routes/routes.ts" />
         <option value="$PROJECT_DIR$/src/models/like/ILike.ts" />
@@ -152,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/models/token/token.ts" />
         <option value="$PROJECT_DIR$/src/models/user/user.ts" />
         <option value="$PROJECT_DIR$/src/controllers/user/ITokenData" />
-        <option value="$PROJECT_DIR$/src/controllers/user/AuthHelper.ts" />
         <option value="$PROJECT_DIR$/src/controllers/user/ITokens.ts" />
         <option value="$PROJECT_DIR$/src/controllers/user/ITokenInDB.ts" />
         <option value="$PROJECT_DIR$/src/controllers/controllers.ts" />
@@ -163,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/controllers/services/EmailServices.ts" />
         <option value="$PROJECT_DIR$/tsoa.json" />
         <option value="$PROJECT_DIR$/package-lock.json" />
-        <option value="$PROJECT_DIR$/src/controllers/theme/ITheme.ts" />
         <option value="$PROJECT_DIR$/src/docs/user.json" />
         <option value="$PROJECT_DIR$/src/docs/theme.json" />
         <option value="$PROJECT_DIR$/src/controllers/like/ILike.ts" />
@@ -176,9 +169,6 @@
         <option value="$PROJECT_DIR$/src/core/app.ts" />
         <option value="$PROJECT_DIR$/src/models/models.ts" />
         <option value="$PROJECT_DIR$/src/routes/Routes.ts" />
-        <option value="$PROJECT_DIR$/src/controllers/user/User.ts" />
-        <option value="$PROJECT_DIR$/src/controllers/user/IUser.ts" />
-        <option value="$PROJECT_DIR$/src/controllers/user/UserController.ts" />
         <option value="$PROJECT_DIR$/src/models/like/like.ts" />
         <option value="$PROJECT_DIR$/src/models/like/ILikeModel.ts" />
         <option value="$PROJECT_DIR$/src/controllers/like/Like.ts" />
@@ -190,10 +180,16 @@
         <option value="$PROJECT_DIR$/src/models/user/User.ts" />
         <option value="$PROJECT_DIR$/src/models/token/Token.ts" />
         <option value="$PROJECT_DIR$/src/models/theme/Theme.ts" />
-        <option value="$PROJECT_DIR$/src/controllers/theme/Theme.ts" />
         <option value="$PROJECT_DIR$/src/controllers/message/Message.ts" />
         <option value="$PROJECT_DIR$/src/controllers/message/IMessage.ts" />
         <option value="$PROJECT_DIR$/src/controllers/message/MessageController.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/theme/ITheme.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/theme/Theme.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user/IAccessTokenData.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user/AuthHelper.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user/User.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user/IUser.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user/UserController.ts" />
       </list>
     </option>
   </component>
@@ -441,12 +437,12 @@
       <workItem from="1562050879919" duration="10233000" />
       <workItem from="1562061892315" duration="359000" />
       <workItem from="1562150258016" duration="88000" />
-      <workItem from="1562242005871" duration="1247000" />
+      <workItem from="1562242005871" duration="3070000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133319000" />
+    <option name="totallyTimeSpent" value="135142000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,15 +455,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27843803" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27843803" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39898133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,7 +481,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/abstact.ts" />
     <entry file="file://$PROJECT_DIR$/src/todo.controller.ts" />
     <entry file="file://$PROJECT_DIR$/src/functions/Functions.ts" />
     <entry file="file://$USER_HOME$/Downloads/config (1).json">
@@ -613,74 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/services/EmailServices.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/IAccessTokenData.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/AuthHelper.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokenData.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokens.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/IUser.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" selection-start-column="34" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/UserController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/controllers.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -717,13 +643,6 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/like/ILike.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="70" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -812,16 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/Theme.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/theme/Theme.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -829,23 +738,6 @@
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ITheme.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/message/IMessage.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -865,6 +757,121 @@
           <caret line="48" column="32" lean-forward="true" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/like/ILike.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="70" selection-start-line="2" selection-start-column="70" selection-end-line="2" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/message/IMessage.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/services/EmailServices.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/theme/IAccessTokenData.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ITheme.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="90" selection-start-line="7" selection-start-column="90" selection-end-line="7" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/theme/Theme.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokens.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/IAccessTokenData.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/ITokenData.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/AuthHelper.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/IUser.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1129">
+          <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/UserController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-527">
+          <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

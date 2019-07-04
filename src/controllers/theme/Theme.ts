@@ -3,6 +3,7 @@ import {IThemeModel} from "../../models/theme/IThemeModel";
 import {models} from "../../models/models";
 import {ObjectID} from "bson";
 import {getEmailFromToken} from "../../middleware/auth";
+import {IMessageModel} from "../../models/message/IMessageModel";
 
 export class Theme implements ITheme{
     private COUNT_OF_THEMES_ON_PAGE: number = 5;
@@ -21,11 +22,11 @@ export class Theme implements ITheme{
 
     async deleteTheme(tokenArg: string, themeId: string): Promise<void> {
         const email: string = getEmailFromToken(tokenArg);
-        const theme: any = await models.ThemeModel.findOne({_id: themeId});
+        const theme: IThemeModel = await models.ThemeModel.findOne({_id: themeId});
         this.validateUserTheme(theme, email);
 
         await models.ThemeModel.findOneAndRemove({_id: themeId});
-        const messages: any[] = await models.MessageModel.find({theme_id: themeId});
+        const messages: IMessageModel[] = await models.MessageModel.find({theme_id: themeId});
 
         await messages.map((message) => {models.LikeModel.remove({message_id: message._id})});
         await models.MessageModel.remove({theme_id: themeId});
@@ -37,23 +38,23 @@ export class Theme implements ITheme{
             throw new TypeError('номер странички не может быть меньше 0');
         }
 
-        let items: any = await models.ThemeModel.find({}).skip((numberOfPage-1) * this.COUNT_OF_THEMES_ON_PAGE).limit(5);
+        let items: any =  models.ThemeModel.find({}).skip((numberOfPage-1) * this.COUNT_OF_THEMES_ON_PAGE).limit(5);
         items = items.map((item) => { return {id: item._id, email:item.email, theme_name:item.theme_name}});
         return items;
     }
 
-    async refreshTheme(tokenArg: string, themeId: string, newNameOfTheme: string): Promise<any> {
+    async refreshTheme(tokenArg: string, themeId: string, newNameOfTheme: string): Promise<void> {
         if (newNameOfTheme.length  <= 0)
             throw new TypeError("название темы не может быть пустым");
 
         const email: string = getEmailFromToken(tokenArg);
-        const theme: any = await models.ThemeModel.findOne({_id: themeId});
+        const theme: IThemeModel = await models.ThemeModel.findOne({_id: themeId});
         this.validateUserTheme(theme, email);
 
         await models.ThemeModel.findOneAndUpdate({_id: themeId}, {theme_name: newNameOfTheme});
     }
 
-    private validateUserTheme(themeModel: any, email: string) : void {
+    private validateUserTheme(themeModel: IThemeModel, email: string) : void {
         if (themeModel === null){
             throw new TypeError("такой темы не существует");
         }

@@ -8,6 +8,10 @@ import {token} from "../../core/app";
 import {ITokens} from "./ITokens";
 import {EmailServices} from "../services/EmailServices";
 import {getEmailFromToken} from "../../middleware/auth";
+import {IUserModel} from "../../models/user/IUserModel";
+import {ITokenModel} from "../../models/token/ITokenModel";
+import {IAccessTokenData} from "../theme/IAccessTokenData";
+import {ITokenData} from "./ITokenData";
 
 export class User implements IUser{
     private async updateTokens(email: string, username: string, pathToImage: string): Promise<ITokens>{
@@ -28,7 +32,7 @@ export class User implements IUser{
     }
 
     async registration(email: string, userName: string, password: string): Promise<void> {
-        const user: any = await models.UserModel.findOne({ email: email });
+        const user: IUserModel = await models.UserModel.findOne({ email: email });
 
         if (user !== null) {
             throw new TypeError("такой пользователь уже существует");
@@ -56,7 +60,7 @@ export class User implements IUser{
     }
 
     async login(email: string, password: string): Promise<ITokens> {
-        const user: any = await models.UserModel.findOne({ email: email });
+        const user: IUserModel = await models.UserModel.findOne({ email: email });
 
         if (user === null)
         {
@@ -66,53 +70,52 @@ export class User implements IUser{
         if (md5(password) !== user.password) {
             throw new TypeError("пароли не совпадают");
         }
-        return await this.updateTokens(email, user.username, user.path_to_image);
+        return await this.updateTokens(email, user.user_name, user.path_to_image);
     }
 
     async refreshTokens(refreshToken: string) : Promise<ITokens> {
         try {
-            const payload = jwt.verify(refreshToken, token.secret);
+            const payload: ITokenData = jwt.verify(refreshToken, token.secret);
         }catch (e) {
             if (e instanceof jwt.TokenExpiredError){
                 throw new TypeError("токен просрочен");
             }
         }
-        const payload = jwt.verify(refreshToken, token.secret);
 
-        if (payload.type !== "refresh") {
-            throw new TypeError("невалидный токен");
-        }
+        const payload: ITokenData = jwt.verify(refreshToken, token.secret);
 
-        const tokenInDB:any = await models.TokenModel.findOne({_id: payload.id});
+
+        const tokenInDB:ITokenModel = await models.TokenModel.findOne({_id: payload.id});
 
         if (tokenInDB === null){
             throw new TypeError("невалидный токен");
         }
-        const user: any = await models.UserModel.findOne({email: tokenInDB.email});
-        return this.updateTokens(tokenInDB.email, user.username, user.path_to_image)
+
+        const user: IUserModel = await models.UserModel.findOne({email: tokenInDB.email});
+        return this.updateTokens(tokenInDB.email, user.user_name, user.path_to_image)
     }
 
     async changeUserName(tokenArg : string, newUserName: string): Promise<void> {
-        const payload : any = jwt.verify(tokenArg, token.secret);
+        const payload : IAccessTokenData = jwt.verify(tokenArg, token.secret);
         await models.UserModel.findOneAndUpdate({email: payload.email}, {username: newUserName});
     }
 
     async senMailWithRecoveryCode(email: string): Promise<void> {
-        const user: any = await models.UserModel.findOne({ email: email });
+        const user: IUserModel = await models.UserModel.findOne({ email: email });
 
         if (user === null)
         {
             throw new TypeError("Такого пользователя не существует");
         }
 
-        const codeForRecovery: any = new ObjectID().toHexString();
+        const codeForRecovery: string = new ObjectID().toHexString();
         await models.UserModel.findOneAndUpdate({ email: email }, {code_for_recovery: codeForRecovery});
         const emailServices: EmailServices = new EmailServices();
         await emailServices.sendCode(email, codeForRecovery);
     }
 
     async recoveryPassword(email: string, newPassword: string, codeForRecovery: string): Promise<void> {
-        const user: any = await models.UserModel.findOne({ email: email });
+        const user: IUserModel = await models.UserModel.findOne({ email: email });
 
         if (user === null) {
             throw new TypeError("Такого пользователя не существует");

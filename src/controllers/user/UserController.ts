@@ -2,6 +2,7 @@ import { Controller, Route, Post, BodyProp, Put} from 'tsoa';
 import  { User } from './User';
 import {checkAuth} from '../../middleware/auth';
 import {IUser} from "./IUser";
+import {ITokens} from "./ITokens";
 
 @Route('/todo')
 export class UserController extends Controller {
@@ -33,11 +34,11 @@ export class UserController extends Controller {
     }
 
     @Post('/user/login')
-    async login(@BodyProp() email: string, @BodyProp() password: string ) : Promise<Object> {
+    async login(@BodyProp() email: string, @BodyProp() password: string ) : Promise<ITokens> {
         try {
             const result = await this.user.login(email, password);
             this.setStatus(200);
-            return {token: result};
+            return result;
         }catch (e) {
             this.setStatus(400);
             console.log(e.message);
@@ -45,7 +46,7 @@ export class UserController extends Controller {
     }
 
     @Post('/user/refresh')
-    async refreshTokens(@BodyProp() refreshToken: string):Promise<Object> {
+    async refreshTokens(@BodyProp() refreshToken: string):Promise<ITokens> {
         try {
             const result = await this.user.refreshTokens(refreshToken);
             this.setStatus(200);

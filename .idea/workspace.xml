@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0da15ba-e156-4380-b347-68d421a15a53" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/like/Like.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/like/Like.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/like/Like.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/like/Like.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/like/LikeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/like/LikeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/like/LikeController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/like/LikeController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/message/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/message/Message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/message/Message.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/message/Message.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/message/MessageController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/message/MessageController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/message/MessageController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/message/MessageController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/theme/Theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/theme/Theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/theme/Theme.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/theme/Theme.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/theme/ThemeController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/theme/ThemeController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/user/AuthHelper.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/user/AuthHelper.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/user/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/user/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/user/User.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/user/User.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/user/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/user/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controllers/user/UserController.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controllers/user/UserController.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/core/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/core/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/core/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/core/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/middleware/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/middleware/auth.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/middleware/auth.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/like/like.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/like/like.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/like/like.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/like/like.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/message/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/message/Message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/message/Message.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/message/Message.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/models.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/models.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/models.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/models.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/theme/Theme.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/theme/Theme.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/token/Token.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/token/Token.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/user/User.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/user/User.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/routes/Routes.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/routes/Routes.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/theme/Theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/theme/Theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/user/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user/UserController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/user.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/user.spec.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/user.spec.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="80" column="39" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
+            <state relative-caret-position="208">
+              <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -63,94 +28,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scheme/tokenSchema.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/data/registrationData.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/data/loginUserData.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26" selection-start-column="13" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/user/UserController.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
+            <state relative-caret-position="-1105">
               <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scheme/themeSchema.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/theme/Theme.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/theme/Theme.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -247,11 +128,6 @@
             <path>
               <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
               <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -259,20 +135,6 @@
               <item name="test_work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="like" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
@@ -285,46 +147,7 @@
               <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
               <item name="test_work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test_work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test_work" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="scheme" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -477,7 +300,7 @@
       <workItem from="1562510008708" duration="12184000" />
       <workItem from="1562528736766" duration="1664000" />
       <workItem from="1562530951872" duration="4259000" />
-      <workItem from="1562537937795" duration="4695000" />
+      <workItem from="1562537937795" duration="5331000" />
     </task>
     <servers />
   </component>
@@ -514,7 +337,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159388000" />
+    <option name="totallyTimeSpent" value="160024000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -708,29 +531,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/message/Message.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/should/should.d.ts" />
     <entry file="file://$PROJECT_DIR$/node_modules/jest-matcher-utils/build/index.d.ts" />
     <entry file="file://$PROJECT_DIR$/node_modules/@types/node/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-927">
           <caret line="942" column="14" selection-start-line="942" selection-start-column="14" selection-end-line="942" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/like/Like.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -866,20 +672,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
+    <entry file="file://$PROJECT_DIR$/src/controllers/message/Message.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+        <state relative-caret-position="-197">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="22" />
           <folding>
-            <element signature="e#0#66#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
+    <entry file="file://$PROJECT_DIR$/src/controllers/like/Like.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="43" />
+        <state relative-caret-position="51">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scheme/tokenSchema.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/data/registrationData.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/data/loginUserData.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="13" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -900,31 +727,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/data/loginUserData.ts">
+    <entry file="file://$PROJECT_DIR$/src/controllers/theme/ThemeController.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="13" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scheme/tokenSchema.ts">
+    <entry file="file://$PROJECT_DIR$/src/controllers/user/User.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/data/registrationData.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="3" selection-end-column="26" />
+        <state relative-caret-position="-1105">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/user.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="80" column="39" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
+        <state relative-caret-position="208">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>

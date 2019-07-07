@@ -15,6 +15,7 @@ const bson_1 = require("bson");
 const AuthHelper_1 = require("./AuthHelper");
 const app_1 = require("../../core/app");
 const EmailServices_1 = require("../services/EmailServices");
+const auth_1 = require("../../middleware/auth");
 class User {
     updateTokens(email, username, pathToImage) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -26,6 +27,12 @@ class User {
                 accessToken: accessToken,
                 refreshToken: refreshToken.token
             };
+        });
+    }
+    setImage(tokenArg, file) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const email = auth_1.getEmailFromToken(tokenArg);
+            yield models_1.models.UserModel.findOneAndUpdate({ email: email }, { path_to_image: "uploads/" + file });
         });
     }
     registration(email, userName, password) {
@@ -60,7 +67,7 @@ class User {
             if (md5(password) !== user.password) {
                 throw new TypeError("пароли не совпадают");
             }
-            return yield this.updateTokens(email, user.username, user.path_to_image);
+            return yield this.updateTokens(email, user.user_name, user.path_to_image);
         });
     }
     refreshTokens(refreshToken) {
@@ -74,15 +81,12 @@ class User {
                 }
             }
             const payload = jwt.verify(refreshToken, app_1.token.secret);
-            if (payload.type !== "refresh") {
-                throw new TypeError("невалидный токен");
-            }
             const tokenInDB = yield models_1.models.TokenModel.findOne({ _id: payload.id });
             if (tokenInDB === null) {
                 throw new TypeError("невалидный токен");
             }
             const user = yield models_1.models.UserModel.findOne({ email: tokenInDB.email });
-            return this.updateTokens(tokenInDB.email, user.username, user.path_to_image);
+            return this.updateTokens(tokenInDB.email, user.user_name, user.path_to_image);
         });
     }
     changeUserName(tokenArg, newUserName) {

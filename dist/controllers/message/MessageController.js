@@ -16,6 +16,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsoa_1 = require("tsoa");
 const Message_1 = require("./Message");
+const auth_1 = require("../../middleware/auth");
 class MessageController extends tsoa_1.Controller {
     constructor() {
         super(...arguments);
@@ -24,6 +25,7 @@ class MessageController extends tsoa_1.Controller {
     createMessage(tokenArg, theme_id, message) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                auth_1.checkAuth(tokenArg);
                 this.setStatus(200);
                 return yield this.message.createNewMessage(tokenArg, theme_id, message);
             }
@@ -36,6 +38,7 @@ class MessageController extends tsoa_1.Controller {
     deleteMessage(tokenArg, message_id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                auth_1.checkAuth(tokenArg);
                 this.setStatus(200);
                 return yield this.message.deleteMessage(tokenArg, message_id);
             }
@@ -48,6 +51,7 @@ class MessageController extends tsoa_1.Controller {
     refreshMessage(tokenArg, message_id, updateMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                auth_1.checkAuth(tokenArg);
                 this.setStatus(200);
                 return yield this.message.refreshMessage(tokenArg, message_id, updateMessage);
             }
@@ -80,7 +84,7 @@ __decorate([
     tsoa_1.Put('/message')
 ], MessageController.prototype, "refreshMessage", null);
 __decorate([
-    tsoa_1.Get('/message')
+    tsoa_1.Get('/message/:page/:theme_id')
 ], MessageController.prototype, "getMessageFromTheme", null);
 exports.MessageController = MessageController;
 //# sourceMappingURL=MessageController.js.map

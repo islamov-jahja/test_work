@@ -10,15 +10,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsoa_1 = require("tsoa");
 const controllers_1 = require("../controllers/controllers");
-const models = {
-    "ITodo": {
-        "properties": {
-            "_id": { "dataType": "string", "required": true },
-            "description": { "dataType": "string", "required": true },
-        },
+const multer = require("multer");
+const models_1 = require("../models/models");
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads");
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    }
+    else {
+        cb(null, false);
     }
 };
-const validationService = new tsoa_1.ValidationService(models);
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+const validationService = new tsoa_1.ValidationService(models_1.models.modelsTsoa);
 function RegisterRoutes(app) {
     app.post('/user', function (request, response, next) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,6 +53,28 @@ function RegisterRoutes(app) {
             }
             const controller = new controllers_1.controllers.UserController();
             const promise = yield controller.registrationOfUser.apply(controller, validatedArgs);
+            yield promiseHandler(controller, promise, response, next);
+        });
+    });
+    app.post('/user/image', upload.single('userImage'), function (request, response, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const args = {
+                token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+            };
+            let validatedArgs = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+                if (request.file.filename === null) {
+                    throw new TypeError("неправильный формат файла");
+                }
+            }
+            catch (err) {
+                return next();
+            }
+            console.log(request.file);
+            validatedArgs.push(request.file.originalname);
+            const controller = new controllers_1.controllers.UserController();
+            const promise = yield controller.setImage.apply(controller, validatedArgs);
             yield promiseHandler(controller, promise, response, next);
         });
     });
@@ -219,7 +258,7 @@ function RegisterRoutes(app) {
             yield promiseHandler(controller, promise, response, next);
         });
     });
-    app.delete('/message', function (request, response, next) {
+    app.delete('/message/{id}', function (request, response, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const args = {
                 token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
@@ -256,11 +295,11 @@ function RegisterRoutes(app) {
             yield promiseHandler(controller, promise, response, next);
         });
     });
-    app.get('/message', function (request, response, next) {
+    app.get('/message/:page/:theme_id', function (request, response, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const args = {
-                theme_id: { "in": "body-prop", "name": "theme_id", "required": true, "dataType": "string" },
-                page: { "in": "body-prop", "name": "page", "required": true, "dataType": "string" }
+                page: { "in": "path", "name": "page", "required": true, "dataType": "string" },
+                theme_id: { "in": "path", "name": "theme_id", "required": true, "dataType": "string" },
             };
             let validatedArgs = [];
             try {
@@ -271,6 +310,42 @@ function RegisterRoutes(app) {
             }
             const controller = new controllers_1.controllers.MessageController();
             const promise = yield controller.getMessageFromTheme.apply(controller, validatedArgs);
+            yield promiseHandler(controller, promise, response, next);
+        });
+    });
+    app.post('/like', function (request, response, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const args = {
+                token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+                message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" },
+            };
+            let validatedArgs = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            }
+            catch (err) {
+                return next();
+            }
+            const controller = new controllers_1.controllers.LikeController();
+            const promise = yield controller.likeMessage.apply(controller, validatedArgs);
+            yield promiseHandler(controller, promise, response, next);
+        });
+    });
+    app.delete('/like', function (request, response, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const args = {
+                token: { "in": "header", "name": "Authorization", "required": true, "dataType": "string" },
+                message_id: { "in": "body-prop", "name": "message_id", "required": true, "dataType": "string" },
+            };
+            let validatedArgs = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            }
+            catch (err) {
+                return next();
+            }
+            const controller = new controllers_1.controllers.LikeController();
+            const promise = yield controller.removeLike.apply(controller, validatedArgs);
             yield promiseHandler(controller, promise, response, next);
         });
     });

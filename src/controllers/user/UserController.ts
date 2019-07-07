@@ -36,7 +36,7 @@ export class UserController extends Controller {
     @Post('/user/login')
     async login(@BodyProp() email: string, @BodyProp() password: string ) : Promise<ITokens> {
         try {
-            const result = await this.user.login(email, password);
+            const result: ITokens = await this.user.login(email, password);
             this.setStatus(200);
             return result;
         }catch (e) {
@@ -48,7 +48,7 @@ export class UserController extends Controller {
     @Post('/user/refresh')
     async refreshTokens(@BodyProp() refreshToken: string):Promise<ITokens> {
         try {
-            const result = await this.user.refreshTokens(refreshToken);
+            const result: ITokens = await this.user.refreshTokens(refreshToken);
             this.setStatus(200);
             return result;
         }catch (e) {

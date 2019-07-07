@@ -23,4 +23,9 @@ function checkAuth(tokenB) {
 }
 exports.checkAuth = checkAuth;
 ;
+function getEmailFromToken(tokenArg) {
+    const payload = jwt.verify(tokenArg, app_1.token.secret);
+    return payload.email;
+}
+exports.getEmailFromToken = getEmailFromToken;
 //# sourceMappingURL=auth.js.map

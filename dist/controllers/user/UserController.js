@@ -37,12 +37,25 @@ let UserController = class UserController extends tsoa_1.Controller {
             }
         });
     }
+    setImage(tokenArg, path_to_file) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                auth_1.checkAuth(tokenArg);
+                yield this.user.setImage(tokenArg, path_to_file);
+                this.setStatus(200);
+            }
+            catch (e) {
+                this.setStatus(400);
+                console.log(e.message);
+            }
+        });
+    }
     login(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield this.user.login(email, password);
                 this.setStatus(200);
-                return { token: result };
+                return result;
             }
             catch (e) {
                 this.setStatus(400);
@@ -106,20 +119,28 @@ __decorate([
     __param(0, tsoa_1.BodyProp()), __param(1, tsoa_1.BodyProp()), __param(2, tsoa_1.BodyProp())
 ], UserController.prototype, "registrationOfUser", null);
 __decorate([
+    tsoa_1.Post('/user/image'),
+    __param(0, tsoa_1.BodyProp()), __param(1, tsoa_1.BodyProp())
+], UserController.prototype, "setImage", null);
+__decorate([
     tsoa_1.Post('/user/login'),
     __param(0, tsoa_1.BodyProp()), __param(1, tsoa_1.BodyProp())
 ], UserController.prototype, "login", null);
 __decorate([
-    tsoa_1.Post('/user/refresh')
+    tsoa_1.Post('/user/refresh'),
+    __param(0, tsoa_1.BodyProp())
 ], UserController.prototype, "refreshTokens", null);
 __decorate([
-    tsoa_1.Put('/user/username')
+    tsoa_1.Put('/user/username'),
+    __param(0, tsoa_1.BodyProp()), __param(1, tsoa_1.BodyProp())
 ], UserController.prototype, "changeUserName", null);
 __decorate([
-    tsoa_1.Post('user/recovery')
+    tsoa_1.Post('user/recovery'),
+    __param(0, tsoa_1.BodyProp())
 ], UserController.prototype, "sendCodeForPasswordRecovery", null);
 __decorate([
-    tsoa_1.Put('user/recovery')
+    tsoa_1.Put('user/recovery'),
+    __param(0, tsoa_1.BodyProp()), __param(1, tsoa_1.BodyProp()), __param(2, tsoa_1.BodyProp())
 ], UserController.prototype, "recoveryPassword", null);
 UserController = __decorate([
     tsoa_1.Route('/todo')

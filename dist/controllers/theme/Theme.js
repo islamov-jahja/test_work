@@ -44,7 +44,7 @@ class Theme {
                 throw new TypeError('номер странички не может быть меньше 0');
             }
             let items = yield models_1.models.ThemeModel.find({}).skip((numberOfPage - 1) * this.COUNT_OF_THEMES_ON_PAGE).limit(5);
-            items = items.map((item) => { console.log(item._id); return { _id: item._id, email: item.email, theme_name: item.theme_name }; });
+            items = items.map((item) => { return { _id: item._id, email: item.email, theme_name: item.theme_name }; });
             return items;
         });
     }

@@ -1,0 +1,1 @@
+{"version":3,"file":"themeSchema.js","sourceRoot":"","sources":["../../../src/test/scheme/themeSchema.ts"],"names":[],"mappings":";;AAAa,QAAA,UAAU,GAAG;IACtB,IAAI,EAAE,QAAQ;IACd,UAAU,EAAC;QACP,GAAG,EAAE;YACD,IAAI,EAAE,QAAQ;SACjB;QACD,KAAK,EAAE;YACH,IAAI,EAAE,QAAQ;SACjB;QACD,UAAU,EAAE;YACR,IAAI,EAAE,QAAQ;SACjB;KACJ;CACJ,CAAC"}

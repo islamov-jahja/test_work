@@ -1,0 +1,1 @@
+{"version":3,"file":"tokenSchema.js","sourceRoot":"","sources":["../../../src/test/scheme/tokenSchema.ts"],"names":[],"mappings":";;AAAa,QAAA,KAAK,GAAG;IACjB,IAAI,EAAE,QAAQ;IACd,UAAU,EAAE;QACR,WAAW,EAAE;YACT,IAAI,EAAE,QAAQ;SACjB;QACD,YAAY,EAAE;YACV,IAAI,EAAE,QAAQ;SACjB;KACJ;IACD,QAAQ,EAAE,CAAC,aAAa,EAAE,cAAc,CAAC;CAC5C,CAAC"}

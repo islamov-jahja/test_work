@@ -22,7 +22,7 @@
     "chai-http": "^4.3.0",
     "chai-json-schema": "^1.5.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.2.1",
     "mocha": "^6.1.4",
